@@ -1,10 +1,14 @@
-import { getPopularGamesUrl } from './api';
-function App() {
-    return (
-        <div className="App">
-            Hello
-        </div>
-    );
-}
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadGames } from './actions/gamesAction';
 
+function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(loadGames());
+    }, []);
+
+    return <div className="App">herllp</div>;
+}
 export default App;
