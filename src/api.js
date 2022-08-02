@@ -10,7 +10,7 @@ function getCurrentMonth() {
         return month;
     }
 }
-// Get current Day
+// Get current day
 function getCurrentDay() {
     const day = new Date().getDate();
     if (day < 10) {
@@ -19,7 +19,7 @@ function getCurrentDay() {
         return day;
     }
 }
-// Current Year-Month-date
+// Current Year-Month-Day
 const currentYear = new Date().getFullYear();
 const currentDate = `${currentYear}-${getCurrentMonth()}-${getCurrentDay()}`;
 // last and next year
@@ -35,3 +35,10 @@ export const getUpcomingGamesUrl = () => `${base_url}${upcoming_games}`;
 // get new games
 const newGames = `games?key=${process.env.REACT_APP_RAWG_API}&dates=${lastYear},${currentDate}&ordering=-realised&page_size=10`;
 export const getNewGamesUrl = () => `${base_url}${newGames}`;
+
+// get game details
+export const getGamesDetailUrl = (games_id) =>
+    `${base_url}games/${games_id}?key=${process.env.REACT_APP_RAWG_API}`;
+// get game screenshots
+export const getGamesScreenshot = (games_id) =>
+    `${base_url}games/${games_id}/screenshots?key=${process.env.REACT_APP_RAWG_API}`;

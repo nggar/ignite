@@ -48,6 +48,7 @@ const Home = () => {
                 ))}
             </Games>
 
+            {/* new games */}
             <h2>New Games</h2>
             <Games>
                 {newGames.map((game) => (
