@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 // components
 import Game from '../components/Game';
+import GameDetail from '../components/GameDetail';
 
 const Home = () => {
     // Fetch Games
@@ -20,6 +21,8 @@ const Home = () => {
 
     return (
         <GameList>
+            <GameDetail />
+
             {/* Upcoming games */}
             <h2>Upcoming Games</h2>
             <Games>

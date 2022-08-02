@@ -1,16 +1,19 @@
 import axios from 'axios';
-import { getGamesDetailUrl } from '../api';
-import { getGamesScreenshot } from '../api';
+import { gameDetailsURL, gameScreenshotURL } from '../api';
 
-export const loadDetail = (id) => async (dispacth) => {
-    const detailGame = await axios.get(getGamesDetailUrl(id));
-    const screenshotGame = await axios.get(getGamesScreenshot(id));
+export const loadDetail = (id) => async (dispatch) => {
+    dispatch({
+        type: 'LOADING_DETAIL',
+    });
 
-    dispacth({
+    const detailData = await axios.get(gameDetailsURL(id));
+    const screenShotData = await axios.get(gameScreenshotURL(id));
+
+    dispatch({
         type: 'GET_DETAIL',
         payload: {
-            game: detailGame.data,
-            screen: screenshotGame.data,
+            game: detailData.data,
+            screen: screenShotData.data,
         },
     });
 };
