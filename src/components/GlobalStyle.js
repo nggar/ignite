@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        
+        overscroll-behavior-y: none;
     }
 
     body {
@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         color: #333;
+    }
+
+    img {
+        display: block;
     }
 `;
 
