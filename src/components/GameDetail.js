@@ -6,9 +6,19 @@ import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 // functions
 import { smallImage } from '../util';
+// Images
+import playStation from '../images/playstation.svg';
+import steam from '../images/steam.svg';
+import apple from '../images/apple.svg';
+import gamepad from '../images/gamepad.svg';
+import nintendo from '../images/nintendo.svg';
+import xbox from '../images/xbox.svg';
+import starEmpty from '../images/star-empty.png';
+import starFull from '../images/star-full.png';
 
 const GameDetail = ({ pathId }) => {
     const navigate = useNavigate();
+
     // exit game detail
     const exitDetailHandler = (e) => {
         const element = e.target;
@@ -17,6 +27,25 @@ const GameDetail = ({ pathId }) => {
             navigate('/');
         }
     };
+
+    // get platform images
+    const getPlatform = (platform) => {
+        switch (platform) {
+            case 'PlayStation 4':
+                return playStation;
+            case 'Xbox One':
+                return xbox;
+            case 'PC':
+                return steam;
+            case 'Nintendo Switch':
+                return nintendo;
+            case 'iOS':
+                return apple;
+            default:
+                return gamepad;
+        }
+    };
+
     // detail data
     const { screen, game, isLoading } = useSelector((state) => state.detail);
     return (
@@ -35,9 +64,12 @@ const GameDetail = ({ pathId }) => {
                                 <h3>Platforms</h3>
                                 <Platforms>
                                     {game.platforms.map((data) => (
-                                        <h3 key={data.platform.id}>
-                                            {data.platform.name}
-                                        </h3>
+                                        <img
+                                            key={data.platform.id}
+                                            src={getPlatform(
+                                                data.platform.name
+                                            )}
+                                        />
                                     ))}
                                 </Platforms>
                             </Info>
