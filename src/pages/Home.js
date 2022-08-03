@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadGames } from '../actions/gamesAction';
 // Styles
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 // components
 import Game from '../components/Game';
 import GameDetail from '../components/GameDetail';
@@ -26,50 +26,54 @@ const Home = () => {
 
     return (
         <GameList>
-            {/* Show Game Detail */}
-            {pathId && <GameDetail />}
+            <AnimateSharedLayout type="crossfade">
+                {/* Show Game Detail */}
+                <AnimatePresence>
+                    {pathId && <GameDetail pathId={pathId} />}
+                </AnimatePresence>
 
-            {/* Upcoming games */}
-            <h2>Upcoming Games</h2>
-            <Games>
-                {upcoming.map((game) => (
-                    <Game
-                        key={game.id}
-                        name={game.name}
-                        released={game.released}
-                        id={game.id}
-                        image={game.background_image}
-                    />
-                ))}
-            </Games>
+                {/* Upcoming games */}
+                <h2>Upcoming Games</h2>
+                <Games>
+                    {upcoming.map((game) => (
+                        <Game
+                            key={game.id}
+                            name={game.name}
+                            released={game.released}
+                            id={game.id}
+                            image={game.background_image}
+                        />
+                    ))}
+                </Games>
 
-            {/* Popular games */}
-            <h2>Popular Games</h2>
-            <Games>
-                {popular.map((game) => (
-                    <Game
-                        key={game.id}
-                        name={game.name}
-                        released={game.released}
-                        id={game.id}
-                        image={game.background_image}
-                    />
-                ))}
-            </Games>
+                {/* Popular games */}
+                <h2>Popular Games</h2>
+                <Games>
+                    {popular.map((game) => (
+                        <Game
+                            key={game.id}
+                            name={game.name}
+                            released={game.released}
+                            id={game.id}
+                            image={game.background_image}
+                        />
+                    ))}
+                </Games>
 
-            {/* new games */}
-            <h2>New Games</h2>
-            <Games>
-                {newGames.map((game) => (
-                    <Game
-                        key={game.id}
-                        name={game.name}
-                        released={game.released}
-                        id={game.id}
-                        image={game.background_image}
-                    />
-                ))}
-            </Games>
+                {/* new games */}
+                <h2>New Games</h2>
+                <Games>
+                    {newGames.map((game) => (
+                        <Game
+                            key={game.id}
+                            name={game.name}
+                            released={game.released}
+                            id={game.id}
+                            image={game.background_image}
+                        />
+                    ))}
+                </Games>
+            </AnimateSharedLayout>
         </GameList>
     );
 };
