@@ -21,6 +21,7 @@ const Home = () => {
 
     return (
         <GameList>
+            {/* Show Game Detail */}
             <GameDetail />
 
             {/* Upcoming games */}

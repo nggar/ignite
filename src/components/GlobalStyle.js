@@ -8,12 +8,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        &::-webkit-scrollbar {
-            width: .5rem;
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color: darkgray;
-        }
+        
     }
 
     body {
