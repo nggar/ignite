@@ -43,6 +43,10 @@ const GlobalStyle = createGlobalStyle`
     img {
         display: block;
     }
+
+    input {
+        font-family: 'Nunito', sans-serif;
+    }
 `;
 
 export default GlobalStyle;
