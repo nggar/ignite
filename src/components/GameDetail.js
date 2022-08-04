@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { smallImage } from '../util';
 // Images
 import playStation from '../images/playstation.svg';
+import ps5 from '../images/ps5.svg';
 import steam from '../images/steam.svg';
 import apple from '../images/apple.svg';
 import gamepad from '../images/gamepad.svg';
@@ -41,6 +42,8 @@ const GameDetail = ({ pathId }) => {
                 return nintendo;
             case 'iOS':
                 return apple;
+            case 'PlayStation 5':
+                return ps5;
             default:
                 return gamepad;
         }
@@ -80,10 +83,11 @@ const GameDetail = ({ pathId }) => {
                                 <Platforms>
                                     {game.platforms.map((data) => (
                                         <img
-                                            key={data.platform.id}
                                             src={getPlatform(
                                                 data.platform.name
                                             )}
+                                            key={data.platform.id}
+                                            alt="game platform"
                                         />
                                     ))}
                                 </Platforms>

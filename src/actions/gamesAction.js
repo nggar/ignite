@@ -3,6 +3,7 @@ import {
     getPopularGamesUrl,
     getUpcomingGamesUrl,
     getNewGamesUrl,
+    SearchGameUrl,
 } from '../api';
 
 // Action creator
@@ -18,6 +19,17 @@ export const loadGames = () => async (dispatch) => {
             popular: popularGames.data.results,
             upcoming: upcomingGames.data.results,
             newGames: newGames.data.results,
+        },
+    });
+};
+
+export const fetchSearch = (game_name) => async (dispatch) => {
+    const searchGames = await axios.get(SearchGameUrl(game_name));
+
+    dispatch({
+        type: 'FETCH_SEARCH',
+        payload: {
+            search: searchGames.data.results,
         },
     });
 };
